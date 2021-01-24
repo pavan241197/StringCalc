@@ -3,6 +3,7 @@ package com.app.Calculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -22,11 +23,16 @@ public class StringCalculator {
 				numList = Arrays.asList(numbers.split("[^0-9-]+"));
 			}
 
+			List<String> negative = new ArrayList<String>();
 			for (String string : numList) {
 				if (Integer.parseInt(string) < 0) {
-					throw new RuntimeException("Negatives not allowed : " + string);
+					negative.add(string);
 				}
 			}
+			if (negative.size() > 0)
+				throw new RuntimeException(
+						"Negatives not allowed : " + negative.stream().collect(Collectors.joining(",")));
+			
 			int sum = 0;
 			for (String string : numList) {
 				sum = sum + Integer.parseInt(string);
