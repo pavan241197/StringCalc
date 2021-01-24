@@ -27,4 +27,9 @@ public class TestCalculator {
 		Assert.assertEquals(10, StringCalculator.add("5\n5"));
 	}
 
+	@Test
+	public void allowCustomDelimiter() {
+		Assert.assertEquals(10, StringCalculator.add("//;6;4"));
+	}
+
 }
