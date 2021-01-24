@@ -22,4 +22,9 @@ public class TestCalculator {
 		Assert.assertEquals(11, StringCalculator.add("5,6"));
 	}
 
+	@Test
+	public void allowLineReturnAsSeparator() {
+		Assert.assertEquals(10, StringCalculator.add("5\n5"));
+	}
+
 }
