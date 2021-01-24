@@ -1,5 +1,8 @@
 package com.app.Calculator;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,4 +35,13 @@ public class TestCalculator {
 		Assert.assertEquals(10, StringCalculator.add("//;6;4"));
 	}
 
+	@Test
+	public void negativeNumbersShouldThrowException() {
+		try {
+			StringCalculator.add("-1, 3");
+			fail("Expected a RuntimeException to be thrown");
+		} catch (RuntimeException ex) {
+			assertEquals(ex.getMessage(), "Negatives not allowed : -1");
+		}
+	}
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StringCalculator {
-	
+
 	public static int add(String numbers) {
 		if (numbers.equals(""))
 			return (Integer) 0;
@@ -22,6 +22,11 @@ public class StringCalculator {
 				numList = Arrays.asList(numbers.split("[^0-9-]+"));
 			}
 
+			for (String string : numList) {
+				if (Integer.parseInt(string) < 0) {
+					throw new RuntimeException("Negatives not allowed : " + string);
+				}
+			}
 			int sum = 0;
 			for (String string : numList) {
 				sum = sum + Integer.parseInt(string);
@@ -29,5 +34,4 @@ public class StringCalculator {
 			return sum;
 		}
 	}
-
 }
