@@ -24,17 +24,23 @@ public class StringCalculator {
 			}
 
 			List<String> negative = new ArrayList<String>();
+
+			List<String> numList2 = new ArrayList<String>();
+
 			for (String string : numList) {
 				if (Integer.parseInt(string) < 0) {
 					negative.add(string);
+				}
+				if (Integer.parseInt(string) < 1001) {
+					numList2.add(string);
 				}
 			}
 			if (negative.size() > 0)
 				throw new RuntimeException(
 						"Negatives not allowed : " + negative.stream().collect(Collectors.joining(",")));
-			
+
 			int sum = 0;
-			for (String string : numList) {
+			for (String string : numList2) {
 				sum = sum + Integer.parseInt(string);
 			}
 			return sum;
